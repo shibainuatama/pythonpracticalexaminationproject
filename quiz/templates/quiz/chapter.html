@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}chapter {{ chapter }}{% endblock title %}
+
+{% block content %}
+<div class="col-md-6 m-3">
+<h3>Chapter {{ chapter }}</h3>
+
+<div class="col-md-6 m-3">
+<table class="table">
+  <tr><th class="text-center">No.</th><th>内容</th></tr>
+  {% for object in object_list %}
+  <tr><td class="text-center">{{ object.number }}</td><td><a href="{% url 'quiz' object.chapter object.number %}">{{ object.about }}</a></td></tr>
+  {% endfor %}
+</table>
+<a href="{% url 'quiz_top' %}" class="m-4">トップページへ</a>
+</div>
+{% endblock content %}

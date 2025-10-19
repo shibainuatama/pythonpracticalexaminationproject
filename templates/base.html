@@ -1,0 +1,17 @@
+{% load static %}
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}{% endblock title %}</title>
+  {% bootstrap_css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'quiz/css/style.css' %}">
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-dark sticky-top">  
+    <a href="{% url 'quiz_top' %}" class="navbar-brand mx-3">Python3 エンジニア認定実践試験　練習問題</a>
+  </nav>
+  {% block content %}{% endblock content %}
+</body>
+</html>

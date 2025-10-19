@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}問題トップ{% endblock title %}
+
+{% block content %}
+<div class="col-md-6 m-3">
+Python3エンジニア認定実践試験の試験勉強にあたり、練習問題が少なくて困った。
+そのような中で、<a href="https://python-basic.com/" target="_blank">ExamApp</a>さんで数少ない練習問題を何度も繰り返し、何とか合格できた。
+ExamAppさんには計り知れないほどの御恩を感じている。
+そして、私もExamAppさんのように、これからPython3エンジニア認定実践試験を受ける人のためになればと思い、Djangoを一から学び、このサイトを立ち上げた。
+Djangoを学び始めてまだ数か月なので、まだまだ粗削りな部分があることをご容赦いただきたい。
+Django学習の進捗に合わせ、当サイトをこれからも磨いていこうと思っている。
+
+<table class="table">
+  <tr><th class="text-center">Chapter</th><th>内容</th></tr>
+  {% for object in object_list %}
+  <tr>
+    <td class="text-center">{{ object.chapter }}</td>
+    {% if object.link %}
+    <td><a href="{% url 'chapter' object.chapter %}">{{ object.title }}</a></td>
+    {% else %}
+    <td>{{ object.title }}</a></td>
+    {% endif %}
+  </tr>
+  {% endfor %}
+</table>
+</div>
+{% endblock content %}

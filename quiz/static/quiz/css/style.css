@@ -1,0 +1,7 @@
+a {
+  text-decoration: none;
+}
+
+.form-check-input[type="radio"] {
+  border: 1px solid #777777;
+}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}chapter {{ object.chapter }} quiz{% endblock title %}
+
+{% block content %}
+<div class="col-md-6 m-3">
+<h3>Chapter {{ object.chapter }}</h3>
+<p>No. {{ object.number }}</p>
+<br>
+
+{% if request.method == "POST" %}
+<p>あなたの回答 {{ your_answer }}</p>
+<p>{{ result }}</p>
+<hr>
+【解説】
+<pre>{{ object.explanation }}</pre>
+<br>
+{% if object.number < max_number  %}
+<a href="{% url 'quiz' object.chapter next_number %}" class="btn btn-primary">次の問題へ</a>
+{% else %}
+Chapter {{ object.chapter }} 終了
+{% endif %}
+<a href="{% url 'chapter' object.chapter %}" class="btn btn-primary">問題一覧へ</a>
+<hr>
+<form>
+  <pre style="opacity: 0.5;">{{ object.question }}</pre>
+  <div class="form-check border-bottom mb-5">
+    <input class="form-check-input" type="radio" name="answer" id="radioA" value="A" disabled>
+    <label class="form-check-label" for="radioA">
+      <p class="h5">Ａ</p>
+      <pre>{{ object.optionA }}</pre>
+    </label>
+  </div>
+  <div class="form-check border-bottom mb-5">
+    <input class="form-check-input" type="radio" name="answer" id="radioB" value="B" disabled>
+    <label class="form-check-label" for="radioB">
+      <p class="h5">Ｂ</p>
+      <pre>{{ object.optionB }}</pre>
+    </label>
+  </div>
+  <div class="form-check border-bottom mb-5">
+    <input class="form-check-input" type="radio" name="answer" id="radioC" value="C" disabled>
+    <label class="form-check-label" for="radioC">
+      <p class="h5">Ｃ</p>
+      <pre>{{ object.optionC }}</pre>
+    </label>
+  </div>
+  <div class="form-check border-bottom mb-5">
+    <input class="form-check-input" type="radio" name="answer" id="radioD" value="D" disabled>
+    <label class="form-check-label" for="radioD">
+      <p class="h5">Ｄ</p>
+      <pre>{{ object.optionD }}</pre>
+    </label>
+  </div>
+</form>
+{% endif %}
+</div>
+{% endblock content %}
